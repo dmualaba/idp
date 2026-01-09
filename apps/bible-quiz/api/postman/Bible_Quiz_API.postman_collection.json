@@ -1,0 +1,683 @@
+{
+  "info": {
+    "_postman_id": "bible-quiz-api-collection",
+    "name": "Bible Quiz API",
+    "description": "oRPC API collection for the Bible Quiz application. All requests use POST method with JSON body.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001/rpc",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "quizId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "attemptId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();",
+                  "if (response.token) {",
+                  "    pm.collectionVariables.set('token', response.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"password123\",\n    \"name\": \"Test User\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth.register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth.register"]
+            },
+            "description": "Register a new user account"
+          }
+        },
+        {
+          "name": "Register Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();",
+                  "if (response.token) {",
+                  "    pm.collectionVariables.set('adminToken', response.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"admin123\",\n    \"name\": \"Admin User\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth.register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth.register"]
+            },
+            "description": "Register an admin user (note: you'll need to manually update the role to 'admin' in the database)"
+          }
+        },
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();",
+                  "if (response.token) {",
+                  "    pm.collectionVariables.set('token', response.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth.login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth.login"]
+            },
+            "description": "Login with existing credentials"
+          }
+        },
+        {
+          "name": "Login Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();",
+                  "if (response.token) {",
+                  "    pm.collectionVariables.set('adminToken', response.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth.login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth.login"]
+            },
+            "description": "Login as admin"
+          }
+        },
+        {
+          "name": "Get Current User (Me)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth.me",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth.me"]
+            },
+            "description": "Get the current authenticated user's information"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth.logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth.logout"]
+            },
+            "description": "Logout the current user"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Quiz Management (Admin)",
+      "item": [
+        {
+          "name": "Create Quiz",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();",
+                  "if (response.id) {",
+                  "    pm.collectionVariables.set('quizId', response.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Old Testament Quiz\",\n    \"description\": \"Test your knowledge of the Old Testament\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.create",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.create"]
+            },
+            "description": "Create a new quiz (Admin only)"
+          }
+        },
+        {
+          "name": "Add Question to Quiz",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"quizId\": {{quizId}},\n    \"questionText\": \"Who built the ark?\",\n    \"options\": [\n        { \"optionText\": \"Moses\", \"isCorrect\": false },\n        { \"optionText\": \"Noah\", \"isCorrect\": true },\n        { \"optionText\": \"Abraham\", \"isCorrect\": false },\n        { \"optionText\": \"David\", \"isCorrect\": false }\n    ],\n    \"orderIndex\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.createQuestion",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.createQuestion"]
+            },
+            "description": "Add a multiple choice question to a quiz (Admin only)"
+          }
+        },
+        {
+          "name": "Add Question 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"quizId\": {{quizId}},\n    \"questionText\": \"How many days did God take to create the world?\",\n    \"options\": [\n        { \"optionText\": \"5 days\", \"isCorrect\": false },\n        { \"optionText\": \"6 days\", \"isCorrect\": true },\n        { \"optionText\": \"7 days\", \"isCorrect\": false },\n        { \"optionText\": \"1 day\", \"isCorrect\": false }\n    ],\n    \"orderIndex\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.createQuestion",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.createQuestion"]
+            },
+            "description": "Add another question"
+          }
+        },
+        {
+          "name": "Add Question 3",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"quizId\": {{quizId}},\n    \"questionText\": \"Who was the first king of Israel?\",\n    \"options\": [\n        { \"optionText\": \"David\", \"isCorrect\": false },\n        { \"optionText\": \"Solomon\", \"isCorrect\": false },\n        { \"optionText\": \"Saul\", \"isCorrect\": true },\n        { \"optionText\": \"Samuel\", \"isCorrect\": false }\n    ],\n    \"orderIndex\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.createQuestion",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.createQuestion"]
+            },
+            "description": "Add third question"
+          }
+        },
+        {
+          "name": "Update Quiz",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"quizId\": {{quizId}},\n    \"title\": \"Updated Old Testament Quiz\",\n    \"description\": \"An updated description\",\n    \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.update",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.update"]
+            },
+            "description": "Update an existing quiz (Admin only)"
+          }
+        },
+        {
+          "name": "Get Quiz (Admin View)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"quizId\": {{quizId}}\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.admin.get",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.admin.get"]
+            },
+            "description": "Get quiz with all details including correct answers (Admin only)"
+          }
+        },
+        {
+          "name": "List All Quizzes (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.admin.list",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.admin.list"]
+            },
+            "description": "List all quizzes including inactive ones (Admin only)"
+          }
+        },
+        {
+          "name": "Delete Question",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"questionId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.deleteQuestion",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.deleteQuestion"]
+            },
+            "description": "Delete a question from a quiz (Admin only)"
+          }
+        },
+        {
+          "name": "Delete Quiz",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"quizId\": {{quizId}}\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.delete",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.delete"]
+            },
+            "description": "Delete a quiz (Admin only)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Quiz (Public/User)",
+      "item": [
+        {
+          "name": "List Active Quizzes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.list",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.list"]
+            },
+            "description": "List all active quizzes (Public)"
+          }
+        },
+        {
+          "name": "Get Quiz Details",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"quizId\": {{quizId}}\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/quiz.get",
+              "host": ["{{baseUrl}}"],
+              "path": ["quiz.get"]
+            },
+            "description": "Get quiz with questions (without correct answers) for taking the quiz"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Quiz Attempts (User)",
+      "item": [
+        {
+          "name": "Start Quiz Attempt",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();",
+                  "if (response.attemptId) {",
+                  "    pm.collectionVariables.set('attemptId', response.attemptId);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"quizId\": {{quizId}}\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/attempt.start",
+              "host": ["{{baseUrl}}"],
+              "path": ["attempt.start"]
+            },
+            "description": "Start a new quiz attempt (User must be logged in)"
+          }
+        },
+        {
+          "name": "Submit Quiz Answers",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"attemptId\": {{attemptId}},\n    \"answers\": [\n        { \"questionId\": 1, \"selectedOptionId\": 2 },\n        { \"questionId\": 2, \"selectedOptionId\": 6 },\n        { \"questionId\": 3, \"selectedOptionId\": 11 }\n    ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/attempt.submit",
+              "host": ["{{baseUrl}}"],
+              "path": ["attempt.submit"]
+            },
+            "description": "Submit all answers for a quiz attempt. Returns score and percentage."
+          }
+        },
+        {
+          "name": "Get Quiz Result",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"attemptId\": {{attemptId}}\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/attempt.result",
+              "host": ["{{baseUrl}}"],
+              "path": ["attempt.result"]
+            },
+            "description": "Get detailed results for a completed quiz attempt including score, percentage, and answer breakdown"
+          }
+        },
+        {
+          "name": "Get My Attempts History",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/attempt.myAttempts",
+              "host": ["{{baseUrl}}"],
+              "path": ["attempt.myAttempts"]
+            },
+            "description": "Get all quiz attempts for the current user"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["health"]
+            },
+            "description": "Check if the server is running"
+          }
+        }
+      ]
+    }
+  ]
+}
