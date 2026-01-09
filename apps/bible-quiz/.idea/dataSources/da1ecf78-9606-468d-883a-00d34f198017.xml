@@ -3,15 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.54">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-4||-9223372036854775808|c|G
-4||10|c|G
-4||10|C|G
-4||10|T|G</Grants>
-      <IntrospectionStateNumber>743</IntrospectionStateNumber>
+      <IntrospectionStateNumber>745</IntrospectionStateNumber>
       <ServerVersion>16.11</ServerVersion>
       <StartupTime>1767905671</StartupTime>
       <TimeZones>true ACDT
@@ -810,7 +802,7 @@ false posixrules
 13273||10|C|G
 13273||-9223372036854775808|U|G
 13273||10|U|G</Grants>
-      <IntrospectionStateNumber>743</IntrospectionStateNumber>
+      <IntrospectionStateNumber>745</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4235,11 +4227,11 @@ false posixrules
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <LastIntrospectionL1Xid>743</LastIntrospectionL1Xid>
-      <LastIntrospectionL2Xid>743</LastIntrospectionL2Xid>
-      <LastIntrospectionL3Xid>743</LastIntrospectionL3Xid>
+      <LastIntrospectionL1Xid>745</LastIntrospectionL1Xid>
+      <LastIntrospectionL2Xid>745</LastIntrospectionL2Xid>
+      <LastIntrospectionL3Xid>745</LastIntrospectionL3Xid>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2026-01-08.20:57:22</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-01-09.13:54:48</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
