@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.54">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>745</IntrospectionStateNumber>
+      <IntrospectionStateNumber>767</IntrospectionStateNumber>
       <ServerVersion>16.11</ServerVersion>
       <StartupTime>1767905671</StartupTime>
       <TimeZones>true ACDT
@@ -802,7 +802,7 @@ false posixrules
 13273||10|C|G
 13273||-9223372036854775808|U|G
 13273||10|U|G</Grants>
-      <IntrospectionStateNumber>745</IntrospectionStateNumber>
+      <IntrospectionStateNumber>767</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4227,14 +4227,561 @@ false posixrules
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <LastIntrospectionL1Xid>745</LastIntrospectionL1Xid>
-      <LastIntrospectionL2Xid>745</LastIntrospectionL2Xid>
-      <LastIntrospectionL3Xid>745</LastIntrospectionL3Xid>
+      <LastIntrospectionL1Xid>767</LastIntrospectionL1Xid>
+      <LastIntrospectionL2Xid>767</LastIntrospectionL2Xid>
+      <LastIntrospectionL3Xid>767</LastIntrospectionL3Xid>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2026-01-09.13:54:48</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-01-09.15:07:20</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
+    <object-type id="265" parent="264" name="user_role">
+      <DetailsLevel>2</DetailsLevel>
+      <Labels>user
+admin</Labels>
+      <ObjectId>16400</ObjectId>
+      <StateNumber>752</StateNumber>
+      <SubCategory>enum</SubCategory>
+      <SubKind>enum</SubKind>
+      <OwnerName>postgres</OwnerName>
+    </object-type>
+    <sequence id="266" parent="264" name="answer_options_id_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16405</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>753</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="267" parent="264" name="questions_id_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16416</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>754</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="268" parent="264" name="quiz_attempts_id_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16427</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>755</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="269" parent="264" name="quizzes_id_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16435</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>756</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="270" parent="264" name="user_answers_id_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16447</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>757</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="271" parent="264" name="users_id_seq">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16454</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>758</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="272" parent="264" name="answer_options">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16406</ObjectId>
+      <StateNumber>759</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="273" parent="264" name="questions">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16417</ObjectId>
+      <StateNumber>759</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="274" parent="264" name="quiz_attempts">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16428</ObjectId>
+      <StateNumber>761</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="275" parent="264" name="quizzes">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16436</ObjectId>
+      <StateNumber>760</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="276" parent="264" name="user_answers">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16448</ObjectId>
+      <StateNumber>764</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="277" parent="264" name="users">
+      <DetailsLevel>2</DetailsLevel>
+      <ObjectId>16455</ObjectId>
+      <StateNumber>761</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="278" parent="272" name="id">
+      <DefaultExpression>nextval(&apos;answer_options_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>753</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16405</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="279" parent="272" name="question_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>753</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="280" parent="272" name="option_text">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>753</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="281" parent="272" name="is_correct">
+      <DefaultExpression>false</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>753</StateNumber>
+      <StoredType>boolean|0s</StoredType>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="282" parent="272" name="order_index">
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>753</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="283" parent="272" name="answer_options_question_id_questions_id_fk">
+      <ColNames>question_id</ColNames>
+      <ObjectId>16468</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>759</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16417</RefTableId>
+    </foreign-key>
+    <index id="284" parent="272" name="answer_options_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16414</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>753</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="285" parent="272" name="answer_options_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16415</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>753</StateNumber>
+      <UnderlyingIndexId>16414</UnderlyingIndexId>
+    </key>
+    <column id="286" parent="273" name="id">
+      <DefaultExpression>nextval(&apos;questions_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>754</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16416</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="287" parent="273" name="quiz_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>754</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="288" parent="273" name="question_text">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>754</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="289" parent="273" name="order_index">
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>754</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="290" parent="273" name="created_at">
+      <DefaultExpression>now()</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>754</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <foreign-key id="291" parent="273" name="questions_quiz_id_quizzes_id_fk">
+      <ColNames>quiz_id</ColNames>
+      <ObjectId>16473</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>760</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16436</RefTableId>
+    </foreign-key>
+    <index id="292" parent="273" name="questions_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16425</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>754</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="293" parent="273" name="questions_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16426</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>754</StateNumber>
+      <UnderlyingIndexId>16425</UnderlyingIndexId>
+    </key>
+    <column id="294" parent="274" name="id">
+      <DefaultExpression>nextval(&apos;quiz_attempts_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>755</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16427</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="295" parent="274" name="user_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>755</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="296" parent="274" name="quiz_id">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>755</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="297" parent="274" name="score">
+      <Position>4</Position>
+      <StateNumber>755</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="298" parent="274" name="total_questions">
+      <Position>5</Position>
+      <StateNumber>755</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="299" parent="274" name="completed_at">
+      <Position>6</Position>
+      <StateNumber>755</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="300" parent="274" name="created_at">
+      <DefaultExpression>now()</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>755</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <foreign-key id="301" parent="274" name="quiz_attempts_user_id_users_id_fk">
+      <ColNames>user_id</ColNames>
+      <ObjectId>16478</ObjectId>
+      <StateNumber>761</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16455</RefTableId>
+    </foreign-key>
+    <foreign-key id="302" parent="274" name="quiz_attempts_quiz_id_quizzes_id_fk">
+      <ColNames>quiz_id</ColNames>
+      <ObjectId>16483</ObjectId>
+      <StateNumber>762</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16436</RefTableId>
+    </foreign-key>
+    <index id="303" parent="274" name="quiz_attempts_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16433</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>755</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="304" parent="274" name="quiz_attempts_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16434</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>755</StateNumber>
+      <UnderlyingIndexId>16433</UnderlyingIndexId>
+    </key>
+    <column id="305" parent="275" name="id">
+      <DefaultExpression>nextval(&apos;quizzes_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>756</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16435</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="306" parent="275" name="title">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>756</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="307" parent="275" name="description">
+      <Position>3</Position>
+      <StateNumber>756</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="308" parent="275" name="created_by">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>756</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="309" parent="275" name="is_active">
+      <DefaultExpression>true</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>756</StateNumber>
+      <StoredType>boolean|0s</StoredType>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="310" parent="275" name="created_at">
+      <DefaultExpression>now()</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>756</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="311" parent="275" name="updated_at">
+      <DefaultExpression>now()</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>756</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <foreign-key id="312" parent="275" name="quizzes_created_by_users_id_fk">
+      <ColNames>created_by</ColNames>
+      <ObjectId>16488</ObjectId>
+      <StateNumber>763</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16455</RefTableId>
+    </foreign-key>
+    <index id="313" parent="275" name="quizzes_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16445</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>756</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="314" parent="275" name="quizzes_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16446</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>756</StateNumber>
+      <UnderlyingIndexId>16445</UnderlyingIndexId>
+    </key>
+    <column id="315" parent="276" name="id">
+      <DefaultExpression>nextval(&apos;user_answers_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>757</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16447</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="316" parent="276" name="attempt_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>757</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="317" parent="276" name="question_id">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>757</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="318" parent="276" name="selected_option_id">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>757</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="319" parent="276" name="is_correct">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>757</StateNumber>
+      <StoredType>boolean|0s</StoredType>
+      <TypeId>16</TypeId>
+    </column>
+    <foreign-key id="320" parent="276" name="user_answers_attempt_id_quiz_attempts_id_fk">
+      <ColNames>attempt_id</ColNames>
+      <ObjectId>16493</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>764</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16428</RefTableId>
+    </foreign-key>
+    <foreign-key id="321" parent="276" name="user_answers_question_id_questions_id_fk">
+      <ColNames>question_id</ColNames>
+      <ObjectId>16498</ObjectId>
+      <StateNumber>765</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16417</RefTableId>
+    </foreign-key>
+    <foreign-key id="322" parent="276" name="user_answers_selected_option_id_answer_options_id_fk">
+      <ColNames>selected_option_id</ColNames>
+      <ObjectId>16503</ObjectId>
+      <StateNumber>766</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16406</RefTableId>
+    </foreign-key>
+    <index id="323" parent="276" name="user_answers_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16452</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>757</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="324" parent="276" name="user_answers_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16453</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>757</StateNumber>
+      <UnderlyingIndexId>16452</UnderlyingIndexId>
+    </key>
+    <column id="325" parent="277" name="id">
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>758</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16454</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="326" parent="277" name="email">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>758</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="327" parent="277" name="password">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>758</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="328" parent="277" name="name">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>758</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="329" parent="277" name="role">
+      <DefaultExpression>&apos;user&apos;::user_role</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>758</StateNumber>
+      <StoredType>user_role|0s</StoredType>
+      <TypeId>16400</TypeId>
+    </column>
+    <column id="330" parent="277" name="created_at">
+      <DefaultExpression>now()</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>758</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="331" parent="277" name="updated_at">
+      <DefaultExpression>now()</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>758</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="332" parent="277" name="users_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16464</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>758</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="333" parent="277" name="users_email_unique">
+      <ColNames>email</ColNames>
+      <ObjectId>16466</ObjectId>
+      <StateNumber>758</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="334" parent="277" name="users_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16465</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>758</StateNumber>
+      <UnderlyingIndexId>16464</UnderlyingIndexId>
+    </key>
+    <key id="335" parent="277" name="users_email_unique">
+      <ObjectId>16467</ObjectId>
+      <StateNumber>758</StateNumber>
+      <UnderlyingIndexId>16466</UnderlyingIndexId>
+    </key>
   </database-model>
 </dataSource>

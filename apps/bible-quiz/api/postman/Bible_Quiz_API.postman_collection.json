@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "bible-quiz-api-collection",
     "name": "Bible Quiz API",
-    "description": "oRPC API collection for the Bible Quiz application. All requests use POST method with JSON body.",
+    "description": "oRPC API collection for the Bible Quiz application. All requests use POST method with JSON body wrapped in a 'json' key.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -44,8 +44,8 @@
               "script": {
                 "exec": [
                   "const response = pm.response.json();",
-                  "if (response.token) {",
-                  "    pm.collectionVariables.set('token', response.token);",
+                  "if (response.json && response.json.token) {",
+                  "    pm.collectionVariables.set('token', response.json.token);",
                   "}"
                 ],
                 "type": "text/javascript"
@@ -62,12 +62,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"password123\",\n    \"name\": \"Test User\"\n}"
+              "raw": "{\n    \"json\": {\n        \"email\": \"user@example.com\",\n        \"password\": \"password123\",\n        \"name\": \"Test User\"\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/auth.register",
-              "host": ["{{baseUrl}}"],
-              "path": ["auth.register"]
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
             },
             "description": "Register a new user account"
           }
@@ -80,8 +85,8 @@
               "script": {
                 "exec": [
                   "const response = pm.response.json();",
-                  "if (response.token) {",
-                  "    pm.collectionVariables.set('adminToken', response.token);",
+                  "if (response.json && response.json.token) {",
+                  "    pm.collectionVariables.set('adminToken', response.json.token);",
                   "}"
                 ],
                 "type": "text/javascript"
@@ -98,12 +103,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"admin123\",\n    \"name\": \"Admin User\"\n}"
+              "raw": "{\n    \"json\": {\n        \"email\": \"admin@example.com\",\n        \"password\": \"admin123\",\n        \"name\": \"Admin User\"\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/auth.register",
-              "host": ["{{baseUrl}}"],
-              "path": ["auth.register"]
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
             },
             "description": "Register an admin user (note: you'll need to manually update the role to 'admin' in the database)"
           }
@@ -116,8 +126,8 @@
               "script": {
                 "exec": [
                   "const response = pm.response.json();",
-                  "if (response.token) {",
-                  "    pm.collectionVariables.set('token', response.token);",
+                  "if (response.json && response.json.token) {",
+                  "    pm.collectionVariables.set('token', response.json.token);",
                   "}"
                 ],
                 "type": "text/javascript"
@@ -134,12 +144,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"password123\"\n}"
+              "raw": "{\n    \"json\": {\n        \"email\": \"user@example.com\",\n        \"password\": \"password123\"\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/auth.login",
-              "host": ["{{baseUrl}}"],
-              "path": ["auth.login"]
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
             },
             "description": "Login with existing credentials"
           }
@@ -152,8 +167,8 @@
               "script": {
                 "exec": [
                   "const response = pm.response.json();",
-                  "if (response.token) {",
-                  "    pm.collectionVariables.set('adminToken', response.token);",
+                  "if (response.json && response.json.token) {",
+                  "    pm.collectionVariables.set('adminToken', response.json.token);",
                   "}"
                 ],
                 "type": "text/javascript"
@@ -170,12 +185,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"admin123\"\n}"
+              "raw": "{\n    \"json\": {\n        \"email\": \"admin@biblequiz.com\",\n        \"password\": \"admin123\"\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/auth.login",
-              "host": ["{{baseUrl}}"],
-              "path": ["auth.login"]
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
             },
             "description": "Login as admin"
           }
@@ -196,12 +216,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{}"
+              "raw": "{\n    \"json\": {}\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/auth.me",
-              "host": ["{{baseUrl}}"],
-              "path": ["auth.me"]
+              "raw": "{{baseUrl}}/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
             },
             "description": "Get the current authenticated user's information"
           }
@@ -222,12 +247,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{}"
+              "raw": "{\n    \"json\": {}\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/auth.logout",
-              "host": ["{{baseUrl}}"],
-              "path": ["auth.logout"]
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ]
             },
             "description": "Logout the current user"
           }
@@ -245,8 +275,8 @@
               "script": {
                 "exec": [
                   "const response = pm.response.json();",
-                  "if (response.id) {",
-                  "    pm.collectionVariables.set('quizId', response.id);",
+                  "if (response.json && response.json.id) {",
+                  "    pm.collectionVariables.set('quizId', response.json.id);",
                   "}"
                 ],
                 "type": "text/javascript"
@@ -267,12 +297,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"title\": \"Old Testament Quiz\",\n    \"description\": \"Test your knowledge of the Old Testament\"\n}"
+              "raw": "{\n    \"json\": {\n        \"title\": \"Old Testament Quiz\",\n        \"description\": \"Test your knowledge of the Old Testament\"\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.create",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.create"]
+              "raw": "{{baseUrl}}/quiz/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "create"
+              ]
             },
             "description": "Create a new quiz (Admin only)"
           }
@@ -293,12 +328,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"quizId\": {{quizId}},\n    \"questionText\": \"Who built the ark?\",\n    \"options\": [\n        { \"optionText\": \"Moses\", \"isCorrect\": false },\n        { \"optionText\": \"Noah\", \"isCorrect\": true },\n        { \"optionText\": \"Abraham\", \"isCorrect\": false },\n        { \"optionText\": \"David\", \"isCorrect\": false }\n    ],\n    \"orderIndex\": 1\n}"
+              "raw": "{\n    \"json\": {\n        \"quizId\": {{quizId}},\n        \"questionText\": \"Who built the ark?\",\n        \"options\": [\n            { \"optionText\": \"Moses\", \"isCorrect\": false },\n            { \"optionText\": \"Noah\", \"isCorrect\": true },\n            { \"optionText\": \"Abraham\", \"isCorrect\": false },\n            { \"optionText\": \"David\", \"isCorrect\": false }\n        ],\n        \"orderIndex\": 1\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.createQuestion",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.createQuestion"]
+              "raw": "{{baseUrl}}/quiz/createQuestion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "createQuestion"
+              ]
             },
             "description": "Add a multiple choice question to a quiz (Admin only)"
           }
@@ -319,12 +359,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"quizId\": {{quizId}},\n    \"questionText\": \"How many days did God take to create the world?\",\n    \"options\": [\n        { \"optionText\": \"5 days\", \"isCorrect\": false },\n        { \"optionText\": \"6 days\", \"isCorrect\": true },\n        { \"optionText\": \"7 days\", \"isCorrect\": false },\n        { \"optionText\": \"1 day\", \"isCorrect\": false }\n    ],\n    \"orderIndex\": 2\n}"
+              "raw": "{\n    \"json\": {\n        \"quizId\": {{quizId}},\n        \"questionText\": \"How many days did God take to create the world?\",\n        \"options\": [\n            { \"optionText\": \"5 days\", \"isCorrect\": false },\n            { \"optionText\": \"6 days\", \"isCorrect\": true },\n            { \"optionText\": \"7 days\", \"isCorrect\": false },\n            { \"optionText\": \"1 day\", \"isCorrect\": false }\n        ],\n        \"orderIndex\": 2\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.createQuestion",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.createQuestion"]
+              "raw": "{{baseUrl}}/quiz/createQuestion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "createQuestion"
+              ]
             },
             "description": "Add another question"
           }
@@ -345,12 +390,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"quizId\": {{quizId}},\n    \"questionText\": \"Who was the first king of Israel?\",\n    \"options\": [\n        { \"optionText\": \"David\", \"isCorrect\": false },\n        { \"optionText\": \"Solomon\", \"isCorrect\": false },\n        { \"optionText\": \"Saul\", \"isCorrect\": true },\n        { \"optionText\": \"Samuel\", \"isCorrect\": false }\n    ],\n    \"orderIndex\": 3\n}"
+              "raw": "{\n    \"json\": {\n        \"quizId\": {{quizId}},\n        \"questionText\": \"Who was the first king of Israel?\",\n        \"options\": [\n            { \"optionText\": \"David\", \"isCorrect\": false },\n            { \"optionText\": \"Solomon\", \"isCorrect\": false },\n            { \"optionText\": \"Saul\", \"isCorrect\": true },\n            { \"optionText\": \"Samuel\", \"isCorrect\": false }\n        ],\n        \"orderIndex\": 3\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.createQuestion",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.createQuestion"]
+              "raw": "{{baseUrl}}/quiz/createQuestion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "createQuestion"
+              ]
             },
             "description": "Add third question"
           }
@@ -371,12 +421,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"quizId\": {{quizId}},\n    \"title\": \"Updated Old Testament Quiz\",\n    \"description\": \"An updated description\",\n    \"isActive\": true\n}"
+              "raw": "{\n    \"json\": {\n        \"quizId\": {{quizId}},\n        \"title\": \"Updated Old Testament Quiz\",\n        \"description\": \"An updated description\",\n        \"isActive\": true\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.update",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.update"]
+              "raw": "{{baseUrl}}/quiz/update",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "update"
+              ]
             },
             "description": "Update an existing quiz (Admin only)"
           }
@@ -397,12 +452,18 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"quizId\": {{quizId}}\n}"
+              "raw": "{\n    \"json\": {\n        \"quizId\": {{quizId}}\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.admin.get",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.admin.get"]
+              "raw": "{{baseUrl}}/quiz/admin/get",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "admin",
+                "get"
+              ]
             },
             "description": "Get quiz with all details including correct answers (Admin only)"
           }
@@ -423,12 +484,18 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{}"
+              "raw": "{\n    \"json\": {}\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.admin.list",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.admin.list"]
+              "raw": "{{baseUrl}}/quiz/admin/list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "admin",
+                "list"
+              ]
             },
             "description": "List all quizzes including inactive ones (Admin only)"
           }
@@ -449,12 +516,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"questionId\": 1\n}"
+              "raw": "{\n    \"json\": {\n        \"questionId\": 1\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.deleteQuestion",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.deleteQuestion"]
+              "raw": "{{baseUrl}}/quiz/deleteQuestion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "deleteQuestion"
+              ]
             },
             "description": "Delete a question from a quiz (Admin only)"
           }
@@ -475,12 +547,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"quizId\": {{quizId}}\n}"
+              "raw": "{\n    \"json\": {\n        \"quizId\": {{quizId}}\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.delete",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.delete"]
+              "raw": "{{baseUrl}}/quiz/delete",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "delete"
+              ]
             },
             "description": "Delete a quiz (Admin only)"
           }
@@ -502,12 +579,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{}"
+              "raw": "{\n    \"json\": {}\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.list",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.list"]
+              "raw": "{{baseUrl}}/quiz/list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "list"
+              ]
             },
             "description": "List all active quizzes (Public)"
           }
@@ -524,12 +606,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"quizId\": {{quizId}}\n}"
+              "raw": "{\n    \"json\": {\n        \"quizId\": {{quizId}}\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/quiz.get",
-              "host": ["{{baseUrl}}"],
-              "path": ["quiz.get"]
+              "raw": "{{baseUrl}}/quiz/get",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "quiz",
+                "get"
+              ]
             },
             "description": "Get quiz with questions (without correct answers) for taking the quiz"
           }
@@ -547,8 +634,8 @@
               "script": {
                 "exec": [
                   "const response = pm.response.json();",
-                  "if (response.attemptId) {",
-                  "    pm.collectionVariables.set('attemptId', response.attemptId);",
+                  "if (response.json && response.json.attemptId) {",
+                  "    pm.collectionVariables.set('attemptId', response.json.attemptId);",
                   "}"
                 ],
                 "type": "text/javascript"
@@ -569,12 +656,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"quizId\": {{quizId}}\n}"
+              "raw": "{\n    \"json\": {\n        \"quizId\": {{quizId}}\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/attempt.start",
-              "host": ["{{baseUrl}}"],
-              "path": ["attempt.start"]
+              "raw": "{{baseUrl}}/attempt/start",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "attempt",
+                "start"
+              ]
             },
             "description": "Start a new quiz attempt (User must be logged in)"
           }
@@ -595,12 +687,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"attemptId\": {{attemptId}},\n    \"answers\": [\n        { \"questionId\": 1, \"selectedOptionId\": 2 },\n        { \"questionId\": 2, \"selectedOptionId\": 6 },\n        { \"questionId\": 3, \"selectedOptionId\": 11 }\n    ]\n}"
+              "raw": "{\n    \"json\": {\n        \"attemptId\": {{attemptId}},\n        \"answers\": [\n            { \"questionId\": 1, \"selectedOptionId\": 2 },\n            { \"questionId\": 2, \"selectedOptionId\": 6 },\n            { \"questionId\": 3, \"selectedOptionId\": 11 }\n        ]\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/attempt.submit",
-              "host": ["{{baseUrl}}"],
-              "path": ["attempt.submit"]
+              "raw": "{{baseUrl}}/attempt/submit",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "attempt",
+                "submit"
+              ]
             },
             "description": "Submit all answers for a quiz attempt. Returns score and percentage."
           }
@@ -621,12 +718,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"attemptId\": {{attemptId}}\n}"
+              "raw": "{\n    \"json\": {\n        \"attemptId\": {{attemptId}}\n    }\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/attempt.result",
-              "host": ["{{baseUrl}}"],
-              "path": ["attempt.result"]
+              "raw": "{{baseUrl}}/attempt/result",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "attempt",
+                "result"
+              ]
             },
             "description": "Get detailed results for a completed quiz attempt including score, percentage, and answer breakdown"
           }
@@ -647,12 +749,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{}"
+              "raw": "{\n    \"json\": {}\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/attempt.myAttempts",
-              "host": ["{{baseUrl}}"],
-              "path": ["attempt.myAttempts"]
+              "raw": "{{baseUrl}}/attempt/myAttempts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "attempt",
+                "myAttempts"
+              ]
             },
             "description": "Get all quiz attempts for the current user"
           }
@@ -670,9 +777,13 @@
             "url": {
               "raw": "http://localhost:3001/health",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "3001",
-              "path": ["health"]
+              "path": [
+                "health"
+              ]
             },
             "description": "Check if the server is running"
           }

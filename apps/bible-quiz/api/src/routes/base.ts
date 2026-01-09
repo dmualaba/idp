@@ -20,10 +20,9 @@ export interface AdminContext extends AuthenticatedContext {
 // Public procedure builder
 export const publicProcedure = os.$context<BaseContext>();
 
-// Auth middleware - validates JWT and adds user to context
-export const authMiddleware = os
-  .$context<BaseContext>()
-  .middleware(async ({ context, next }) => {
+// Authenticated procedure builder
+export const protectedProcedure = publicProcedure.use(
+  async ({ context, next }) => {
     const token = parseAuthHeader(context.headers.authorization);
 
     if (!token) {
@@ -43,23 +42,32 @@ export const authMiddleware = os
     return next({
       context: { ...context, user },
     });
-  });
-
-// Authenticated procedure builder
-export const protectedProcedure = authMiddleware;
-
-// Admin middleware - requires admin role
-export const adminMiddleware = authMiddleware.middleware(
-  async ({ context, next }) => {
-    if (context.user.role !== "admin") {
-      throw new ORPCError("FORBIDDEN", { message: "Admin access required" });
-    }
-
-    return next({
-      context: context as AdminContext,
-    });
-  },
+  }
 );
 
-// Admin procedure builder
-export const adminProcedure = adminMiddleware;
+// Admin procedure builder - includes auth + admin role check
+export const adminProcedure = publicProcedure.use(async ({ context, next }) => {
+  const token = parseAuthHeader(context.headers.authorization);
+
+  if (!token) {
+    throw new ORPCError("UNAUTHORIZED", {
+      message: "Missing authentication token",
+    });
+  }
+
+  const user = verifyToken(token);
+
+  if (!user) {
+    throw new ORPCError("UNAUTHORIZED", {
+      message: "Invalid or expired token",
+    });
+  }
+
+  if (user.role !== "admin") {
+    throw new ORPCError("FORBIDDEN", { message: "Admin access required" });
+  }
+
+  return next({
+    context: { ...context, user } as AdminContext,
+  });
+});
