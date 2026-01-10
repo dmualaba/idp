@@ -59,7 +59,7 @@ function QuizPage() {
   // Start quiz mutation
   const startMutation = useMutation({
     mutationFn: () => api.attempt.start({ quizId: parseInt(quizId) }),
-    onSuccess: (data) => {
+    onSuccess: (data: { attemptId: number }) => {
       setAttemptId(data.attemptId);
       setIsStarted(true);
     },
@@ -67,12 +67,12 @@ function QuizPage() {
 
   // Submit quiz mutation
   const submitMutation = useMutation({
-    mutationFn: (data: { attemptId: number; answers: Answer[] }) =>
-      api.attempt.submit(data),
-    onSuccess: (data) => {
+    mutationFn: (submitData: { attemptId: number; answers: Answer[] }) =>
+      api.attempt.submit(submitData),
+    onSuccess: (result: { attemptId: number }) => {
       navigate({
         to: "/result/$attemptId",
-        params: { attemptId: String(data.attemptId) },
+        params: { attemptId: String(result.attemptId) },
       });
     },
   });

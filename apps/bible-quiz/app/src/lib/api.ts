@@ -1,6 +1,5 @@
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
-import type { Router } from "../../api/src/routes";
 
 // API URL - defaults to localhost:3001 for development
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001/rpc";
@@ -17,7 +16,8 @@ const link = new RPCLink({
   },
 });
 
-export const api = createORPCClient<Router>(link);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const api: any = createORPCClient(link);
 
 // Auth helpers
 export function setAuthToken(token: string) {

@@ -25,14 +25,18 @@ export function Header() {
                   <History className="h-4 w-4" />
                   My History
                 </Link>
+                {user?.role === "admin" && (
+                  <Link
+                    to="/admin"
+                    className="flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 font-medium"
+                  >
+                    <PlusCircle className="h-4 w-4" />
+                    Manage Quizzes
+                  </Link>
+                )}
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <User className="h-4 w-4" />
                   <span>{user?.name}</span>
-                  {user?.role === "admin" && (
-                    <span className="px-2 py-0.5 bg-primary-100 text-primary-700 rounded-full text-xs">
-                      Admin
-                    </span>
-                  )}
                 </div>
                 <Button variant="ghost" size="sm" onClick={logout}>
                   <LogOut className="h-4 w-4 mr-1" />
