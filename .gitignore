@@ -1,2 +1,22 @@
 .turbo
 .idea
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+
+# Drizzle
+drizzle/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
