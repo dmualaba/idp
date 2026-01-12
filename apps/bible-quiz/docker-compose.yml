@@ -32,5 +32,14 @@ services:
       db:
         condition: service_healthy
 
+  app:
+    image: dmualaba/biblequiz-app:v1.0.0
+    container_name: bible-quiz-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
 volumes:
   postgres_data:
