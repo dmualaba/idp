@@ -211,8 +211,8 @@ export const getResult = protectedProcedure
     }
 
     const percentage =
-      attempt.totalQuestions && attempt.totalQuestions > 0
-        ? Math.round((attempt.score! / attempt.totalQuestions) * 100)
+      attempt.totalQuestions && attempt.totalQuestions > 0 && attempt.score !== null
+        ? Math.round((attempt.score / attempt.totalQuestions) * 100)
         : 0;
 
     return {
