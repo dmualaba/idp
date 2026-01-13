@@ -20,3 +20,6 @@ drizzle/
 
 # OS
 .DS_Store
+
+# SSL certificates (sensitive)
+apps/bible-quiz/infra/nginx/certs/
