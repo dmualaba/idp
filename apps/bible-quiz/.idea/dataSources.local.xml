@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="DB-253.29346.170">
-    <data-source name="bible_quiz@localhost" uuid="da1ecf78-9606-468d-883a-00d34f198017">
+    <data-source name="bible-quiz-db@localhost" uuid="6d55f7e0-ee1f-40bc-a33f-2cac27a38520">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="bible_quiz@localhost" uuid="360e3a6e-0dcf-4f87-a3ef-4a94151c92ec">
       <database-info product="PostgreSQL" version="16.11" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="16.11" exact-driver-version="42.7">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
