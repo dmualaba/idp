@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bible-quiz-db
+  labels:
+    app: bible-quiz-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bible-quiz-db
+  template:
+    metadata:
+      labels:
+        app: bible-quiz-db
+    spec:
+      containers:
+        - name: bible-quiz-db
+          image: postgres:16-alpine
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_DB
+              value: bible_quiz       
+    

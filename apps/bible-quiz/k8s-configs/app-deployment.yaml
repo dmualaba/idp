@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bible-quiz-app
+  labels:
+    app: bible-quiz-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bible-quiz-app
+  template:
+    metadata:
+      labels:
+        app: bible-quiz-app
+    spec:
+      containers:
+        - name: bible-quiz-app
+          image: dmualaba/biblequiz-app:v1.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000

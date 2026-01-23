@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bible-quiz-api
+  labels:
+    app: bible-quiz-api
+spec:
+  ports:
+    - port: 3001
+      targetPort: 3001
+      nodePort: 30002
+  selector:
+    app: bible-quiz-api
+  type: NodePort
